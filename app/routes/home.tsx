@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"; // It's conventional to use react-router-dom
+import { Link } from "react-router-dom";
 import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
@@ -10,28 +10,36 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <main>
-      {/* 1. Hero Section with Gradient Background and Refined Padding */}
-      <section className="px-4 py-16 sm:py-20 bg-gradient-to-b from-white to-slate-50">
-        <div className="container items-center max-w-5xl mx-auto">
-          <div className="flex flex-wrap items-center sm:-mx-4">
-            <div className="w-full md:w-1/2 md:px-4">
+    // Main container with dark theme and relative positioning for aurora blobs
+    <main className="bg-slate-900 text-slate-200 relative overflow-hidden animate-fadeIn">
+      {/* Aurora Background Blobs - Colors updated to cyan/teal */}
+      <div className="absolute top-0 left-0 w-full h-full z-0">
+        <div className="absolute top-1/4 -left-64 w-[40rem] h-[40rem] bg-cyan-500/10 rounded-full filter blur-3xl opacity-50 animate-aurora-1"></div>
+        <div className="absolute top-1/2 -right-64 w-[40rem] h-[40rem] bg-teal-500/10 rounded-full filter blur-3xl opacity-50 animate-aurora-2"></div>
+      </div>
+
+      {/* Hero Section */}
+      <section className="relative z-10 px-4 py-24 sm:py-32">
+        <div className="container items-center max-w-6xl mx-auto">
+          <div className="flex flex-wrap items-center -mx-4">
+            <div className="w-full md:w-1/2 px-4">
               <div className="space-y-6 max-w-lg">
-                <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
+                {/* Headline text gradient updated to cyan/teal */}
+                <h1 className="text-4xl font-extrabold tracking-tight text-slate-100 sm:text-5xl md:text-6xl">
                   Explore Countries with{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-500">
                     Real-Time Data
                   </span>
                 </h1>
-                <p className="text-lg text-slate-600">
+                <p className="text-lg text-slate-400">
                   Discover details about every country around the world – from
                   capitals to regions!
                 </p>
-                {/* 2. Buttons with Enhanced Hover Effects */}
                 <div className="flex flex-col sm:flex-row sm:space-x-4">
+                  {/* Primary button colors updated to cyan */}
                   <Link
                     to="/countries"
-                    className="flex items-center justify-center px-8 py-3 text-lg font-semibold text-white bg-indigo-600 rounded-lg shadow-md hover:bg-indigo-700 transform hover:-translate-y-1 transition-all duration-300"
+                    className="flex items-center justify-center px-8 py-3 text-lg font-semibold text-white bg-cyan-600 rounded-lg shadow-lg hover:bg-cyan-700 transform hover:-translate-y-1 transition-all duration-300 hover:shadow-cyan-500/50"
                   >
                     Explore Now
                     <svg
@@ -51,19 +59,21 @@ export default function Home() {
                   </Link>
                   <Link
                     to="/about"
-                    className="mt-3 sm:mt-0 flex items-center justify-center px-8 py-3 text-lg font-semibold text-slate-700 bg-slate-200 rounded-lg shadow-md hover:bg-slate-300 transform hover:-translate-y-1 transition-all duration-300"
+                    className="mt-3 sm:mt-0 flex items-center justify-center px-8 py-3 text-lg font-semibold text-slate-200 bg-slate-800/50 border border-slate-700 rounded-lg shadow-md hover:bg-slate-700/70 transform hover:-translate-y-1 transition-all duration-300"
                   >
                     Learn More
                   </Link>
                 </div>
               </div>
             </div>
-            <div className="w-full md:w-1/2 mt-12 md:mt-0">
-              <div className="overflow-hidden rounded-xl shadow-2xl">
+            <div className="w-full md:w-1/2 mt-12 md:mt-0 px-4 flex items-center justify-center">
+              <div className="relative">
+                {/* Subtle glow effect to match the theme */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-teal-500 blur-xl opacity-5"></div>
                 <img
-                  src="https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                  alt="Scenic view of a coastal city"
-                  className="w-full h-auto"
+                  src="/globe - Copy.png"
+                  alt="Holographic style globe"
+                  className="relative w-full max-w-xlg"
                 />
               </div>
             </div>
@@ -71,22 +81,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. New "Features" Section */}
-      <section className="py-20 bg-white">
+      {/* Features Section - Colors updated to cyan/teal */}
+      <section className="relative z-10 py-20">
         <div className="container max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-slate-800 mb-4">
-            Why Use REST<span className="text-indigo-600">Explorer</span> ?
+          <h2 className="text-3xl font-bold text-slate-100 mb-4 sm:text-4xl">
+            Why Use REST<span className="text-cyan-400">Explorer</span>?
           </h2>
-          <p className="text-slate-600 max-w-2xl mx-auto mb-12">
+          <p className="text-slate-400 max-w-2xl mx-auto mb-16">
             All the information you need about the world, right at your
             fingertips.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="bg-slate-50 p-8 rounded-lg shadow-sm">
-              <div className="bg-indigo-100 text-indigo-600 rounded-full h-12 w-12 flex items-center justify-center mx-auto mb-4">
+            {/* Feature Card 1 */}
+            <div className="bg-slate-800/20 backdrop-blur-lg p-8 rounded-xl border border-slate-700 shadow-lg transition-all duration-300 hover:border-cyan-500/50 hover:-translate-y-2">
+              <div className="bg-cyan-500/10 text-cyan-400 rounded-full h-12 w-12 flex items-center justify-center mx-auto mb-4">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -100,19 +109,19 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
+              <h3 className="text-xl font-bold text-slate-100 mb-2">
                 Up-to-Date Info
               </h3>
-              <p className="text-slate-500">
+              <p className="text-slate-400">
                 Access the latest demographic and geographic data for every
                 country.
               </p>
             </div>
-            {/* Feature 2 */}
-            <div className="bg-slate-50 p-8 rounded-lg shadow-sm">
-              <div className="bg-indigo-100 text-indigo-600 rounded-full h-12 w-12 flex items-center justify-center mx-auto mb-4">
+
+            {/* Feature Card 2 */}
+            <div className="bg-slate-800/20 backdrop-blur-lg p-8 rounded-xl border border-slate-700 shadow-lg transition-all duration-300 hover:border-cyan-500/50 hover:-translate-y-2">
+              <div className="bg-cyan-500/10 text-cyan-400 rounded-full h-12 w-12 flex items-center justify-center mx-auto mb-4">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -126,19 +135,19 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
+              <h3 className="text-xl font-bold text-slate-100 mb-2">
                 Powerful Search
               </h3>
-              <p className="text-slate-500">
+              <p className="text-slate-400">
                 Instantly find any country or filter by region with our
                 easy-to-use tools.
               </p>
             </div>
-            {/* Feature 3 */}
-            <div className="bg-slate-50 p-8 rounded-lg shadow-sm">
-              <div className="bg-indigo-100 text-indigo-600 rounded-full h-12 w-12 flex items-center justify-center mx-auto mb-4">
+
+            {/* Feature Card 3 */}
+            <div className="bg-slate-800/20 backdrop-blur-lg p-8 rounded-xl border border-slate-700 shadow-lg transition-all duration-300 hover:border-cyan-500/50 hover:-translate-y-2">
+              <div className="bg-cyan-500/10 text-cyan-400 rounded-full h-12 w-12 flex items-center justify-center mx-auto mb-4">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -152,10 +161,10 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
+              <h3 className="text-xl font-bold text-slate-100 mb-2">
                 Real-Time Data
               </h3>
-              <p className="text-slate-500">
+              <p className="text-slate-400">
                 Our information is powered by a live API, ensuring you get
                 current facts.
               </p>
